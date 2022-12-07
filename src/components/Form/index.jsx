@@ -1,14 +1,25 @@
 import React from 'react'
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  SafeAreaView
+} from 'react-native'
 
 import { useForm, Controller } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 
+import { Select } from '../Select'
+
 import { styles } from './styles'
 
 const schema = yup.object({
-  carga: yup.number().required().positive('Informe a carga atual')
+  carga: yup
+    .number('Somente números')
+    .positive('Somente números positivos')
+    .required('Informe a carga atual')
 })
 
 export function Form() {
@@ -17,7 +28,7 @@ export function Form() {
     handleSubmit,
     formState: { errors }
   } = useForm({
-    resolver: yupResolver()
+    resolver: yupResolver(schema)
   })
 
   function handleSignIn(data) {
@@ -25,7 +36,7 @@ export function Form() {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text>Carga:</Text>
 
       <Controller
@@ -41,10 +52,14 @@ export function Form() {
           />
         )}
       />
+      {errors.carga && (
+        <Text style={styles.labelError}>{errors.carga?.message}</Text>
+      )}
 
       <TouchableOpacity onPress={handleSubmit(handleSignIn)}>
         <Text>Calcular</Text>
       </TouchableOpacity>
-    </View>
+      <Select onChangeSelect={id => alert(id)} text="Selecione a opção" />
+    </SafeAreaView>
   )
 }

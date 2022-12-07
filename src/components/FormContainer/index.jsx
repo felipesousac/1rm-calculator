@@ -1,11 +1,11 @@
-import { NativeBaseProvider } from 'native-base'
 import { View, Text } from 'react-native'
 import { Form } from '../Form'
+import { styles } from './styles'
 
 export function FormContainer() {
   return (
-    <NativeBaseProvider>
+    <View style={styles.container}>
       <Form />
-    </NativeBaseProvider>
+    </View>
   )
 }
