@@ -22,6 +22,17 @@ const schema = yup.object({
     .required('Informe a carga atual')
 })
 
+const fakePeso = [
+  {
+    id: '1',
+    peso: 'quilos'
+  },
+  {
+    id: '2',
+    peso: 'libras'
+  }
+]
+
 export function Form() {
   const {
     control,
@@ -59,7 +70,11 @@ export function Form() {
       <TouchableOpacity onPress={handleSubmit(handleSignIn)}>
         <Text>Calcular</Text>
       </TouchableOpacity>
-      <Select onChangeSelect={id => alert(id)} text="Selecione a opção" />
+      <Select
+        onChangeSelect={id => alert(id)}
+        text="Selecione a opção"
+        options={fakePeso}
+      />
     </SafeAreaView>
   )
 }

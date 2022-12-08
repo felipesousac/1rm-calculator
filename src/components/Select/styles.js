@@ -23,5 +23,25 @@ export const styles = StyleSheet.create({
     padding: 12,
     borderBottomColor: '#ddd',
     borderBottomWidth: 1
+  },
+  modalTitle: {
+    fontSize: 18,
+    color: '#555'
+  },
+  modalCancel: {
+    fontSize: 14,
+    color: 'blue'
+  },
+  optionContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomColor: '#eee',
+    borderBottomWidth: 1,
+    padding: 10
+  },
+  optionTxt: {
+    fontSize: 16,
+    color: '#555'
   }
 })

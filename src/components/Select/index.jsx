@@ -15,6 +15,14 @@ export function Select({ options, onChangeSelect, text }) {
   const [txt, setTxt] = useState(text)
   const [modalVisible, setModalVisible] = useState(false)
 
+  function renderOption(item) {
+    return (
+      <TouchableOpacity style={styles.optionContainer}>
+        <Text style={styles.optionTxt}>{item.peso}</Text>
+      </TouchableOpacity>
+    )
+  }
+
   return (
     <>
       <TouchableOpacity
@@ -36,11 +44,16 @@ export function Select({ options, onChangeSelect, text }) {
             <TouchableOpacity onPress={() => setModalVisible(false)}>
               <Icon name={'chevron-left'} size={20} color={'#555'} />
             </TouchableOpacity>
-            <Text>{text}</Text>
+            <Text style={styles.modalTitle}>{text}</Text>
             <TouchableOpacity onPress={() => setModalVisible(false)}>
-              <Text>Cancelar</Text>
+              <Text style={styles.modalCancel}>Cancelar</Text>
             </TouchableOpacity>
           </View>
+          <FlatList
+            data={options}
+            keyExtractor={item => String(item.id)}
+            renderItem={({ item }) => renderOption(item)}
+          />
         </SafeAreaView>
       </Modal>
     </>
