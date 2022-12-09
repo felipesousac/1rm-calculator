@@ -11,20 +11,40 @@ import Icon from 'react-native-vector-icons/FontAwesome'
 
 import { styles } from './styles'
 
-export function Select({ options, onChangeSelect, text }) {
+export function Select({ options, onChangeSelect, text, label }) {
   const [txt, setTxt] = useState(text)
   const [modalVisible, setModalVisible] = useState(false)
+  const [selected, setSelected] = useState('')
 
   function renderOption(item) {
     return (
-      <TouchableOpacity style={styles.optionContainer}>
-        <Text style={styles.optionTxt}>{item.peso}</Text>
+      <TouchableOpacity
+        style={[
+          styles.optionContainer,
+          { backgroundColor: item.id === selected ? '#eee' : '#fff' }
+        ]}
+        onPress={() => {
+          onChangeSelect(item.id)
+          setTxt(item.peso)
+          setModalVisible(false)
+          setSelected(item.id)
+        }}
+      >
+        <Text
+          style={[
+            styles.optionTxt,
+            { fontWeight: item.id === selected ? 'bold' : 'normal' }
+          ]}
+        >
+          {item.peso}
+        </Text>
       </TouchableOpacity>
     )
   }
 
   return (
     <>
+      <Text style={styles.label}>{label}</Text>
       <TouchableOpacity
         style={styles.container}
         onPress={() => setModalVisible(true)}

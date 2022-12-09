@@ -71,9 +71,10 @@ export function Form() {
         <Text>Calcular</Text>
       </TouchableOpacity>
       <Select
-        onChangeSelect={id => alert(id)}
+        onChangeSelect={() => {}}
         text="Selecione a opção"
         options={fakePeso}
+        label="Peso"
       />
     </SafeAreaView>
   )

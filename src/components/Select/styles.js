@@ -12,6 +12,12 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between'
   },
+  label: {
+    color: '#555',
+    fontSize: 13,
+    paddingLeft: 20,
+    paddingVertical: 10
+  },
   txt: {
     color: '#555',
     fontSize: 16
