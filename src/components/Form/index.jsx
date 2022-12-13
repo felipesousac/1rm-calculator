@@ -14,6 +14,7 @@ import * as yup from 'yup'
 import { Select } from '../Select'
 
 import { styles } from './styles'
+import { SubmitButton } from '../SubmitButton'
 
 const schema = yup.object({
   carga: yup
@@ -76,6 +77,13 @@ export function Form() {
         options={fakePeso}
         label="Peso"
       />
+      <Select
+        onChangeSelect={() => {}}
+        text="Selecione a opção"
+        options={fakePeso}
+        label="Número de repetiçõess"
+      />
+      <SubmitButton />
     </SafeAreaView>
   )
 }
